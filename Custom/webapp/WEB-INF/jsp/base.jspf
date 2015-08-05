@@ -1,0 +1,2 @@
+<%@ page import="org.arthan.support.servlets.TicketServlet, org.arthan.support.entity.Attachment" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
