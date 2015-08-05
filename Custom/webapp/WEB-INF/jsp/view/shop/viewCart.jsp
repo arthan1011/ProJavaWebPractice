@@ -14,6 +14,7 @@
 <body>
   <h2>View cart</h2>
   <a href="<c:url value="/shop"/>">Product list</a><br/>
+  <a href="<c:url value="/shop?action=emptyCart"/>">Empty cart</a><br/>
   <%
     @SuppressWarnings("unchecked")
     Map<Integer, String> products = (Map<Integer, String>) request.getAttribute("products");

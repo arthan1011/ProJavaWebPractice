@@ -21,6 +21,7 @@ import java.util.Map;
         urlPatterns = {"/shop"}
 )
 public class StoreServlet extends HttpServlet {
+    public static final String CART_ATTRIBUTE_NAME = "cart";
     private final Map<Integer, String> products = Maps.newHashMap();
 
     public StoreServlet() {
@@ -42,12 +43,20 @@ public class StoreServlet extends HttpServlet {
             case "viewCart":
                 viewCart(request, response);
                 break;
+            case "emptyCart":
+                emptyCart(request, response);
+                break;
             case "browse":
             default:
                 browse(request, response);
                 break;
         }
 
+    }
+
+    private void emptyCart(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().removeAttribute(CART_ATTRIBUTE_NAME);
+        response.sendRedirect("shop?action=viewCart");
     }
 
     private void addToCart(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -67,14 +76,14 @@ public class StoreServlet extends HttpServlet {
     }
 
     private void createCartIfNotExist(HttpSession session) {
-        if (session.getAttribute("cart") == null) {
-            session.setAttribute("cart", Maps.<Integer, Integer>newHashMap());
+        if (session.getAttribute(CART_ATTRIBUTE_NAME) == null) {
+            session.setAttribute(CART_ATTRIBUTE_NAME, Maps.<Integer, Integer>newHashMap());
         }
     }
 
     private void addProductToCart(int productID, HttpSession session) {
         @SuppressWarnings("unchecked")
-        Map<Integer, Integer> cart = (Map<Integer, Integer>) session.getAttribute("cart");
+        Map<Integer, Integer> cart = (Map<Integer, Integer>) session.getAttribute(CART_ATTRIBUTE_NAME);
         if (!cart.containsKey(productID)) {
             cart.put(productID, 0);
         }
