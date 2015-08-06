@@ -13,8 +13,6 @@
   <h2>Create a ticket</h2>
   <form action="tickets" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="action" value="create"/>
-    <label for="nameInput">Your name</label><br/>
-    <input id="nameInput" name="customerName" type="text" /><br/>
     <label for="subjectInput">Subject</label><br/>
     <input id="subjectInput" name="subject" type="text" /><br/>
     <label for="bodyInput">Body</label><br/>

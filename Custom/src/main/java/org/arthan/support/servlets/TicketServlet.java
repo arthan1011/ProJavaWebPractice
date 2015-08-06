@@ -36,6 +36,12 @@ public class TicketServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if (isNotLogged(request)) {
+            response.sendRedirect("login");
+            return;
+        }
+
         String action = request.getParameter("action");
         if (action == null) {
             action = "list";
@@ -58,8 +64,17 @@ public class TicketServlet extends HttpServlet {
         }
     }
 
+    private boolean isNotLogged(HttpServletRequest request) {
+        return request.getSession().getAttribute("username") == null;
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (isNotLogged(request)) {
+            response.sendRedirect("login");
+            return;
+        }
+
         String action = request.getParameter("action");
         if (action == null) {
             action = "list";
@@ -140,7 +155,8 @@ public class TicketServlet extends HttpServlet {
             throws ServletException, IOException
     {
         Ticket ticket = new Ticket();
-        ticket.setCustomerName(request.getParameter("customerName"));
+        ticket.setCustomerName(
+                (String) request.getSession().getAttribute("username"));
         ticket.setSubject(request.getParameter("subject"));
         ticket.setBody(request.getParameter("body"));
 
