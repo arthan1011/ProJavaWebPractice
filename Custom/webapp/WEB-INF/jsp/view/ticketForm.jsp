@@ -10,6 +10,7 @@
   <title>Customer Support</title>
 </head>
 <body>
+  <a href="<c:url value="/login?logout" />">Logout</a>
   <h2>Create a ticket</h2>
   <form action="tickets" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="action" value="create"/>

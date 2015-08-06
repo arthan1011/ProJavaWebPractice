@@ -34,14 +34,29 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-        if (session.getAttribute("username") != null) {
-            response.sendRedirect("tickets");
-            return;
-        }
+        if (checkLogoutCommand(request, response)) return;
+        if (checkLogged(request, response)) return;
 
         request.setAttribute("loginFailed", false);
         request.getRequestDispatcher("/WEB-INF/jsp/view/login.jsp").forward(request, response);
+    }
+
+    private boolean checkLogoutCommand(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (request.getParameter("logout") != null) {
+            request.getSession().invalidate();
+            response.sendRedirect("login");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkLogged(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("username") != null) {
+            response.sendRedirect("tickets");
+            return true;
+        }
+        return false;
     }
 
     @Override

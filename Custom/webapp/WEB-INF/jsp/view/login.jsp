@@ -11,6 +11,7 @@
     <title>Customer Support</title>
 </head>
 <body>
+  <a href="<c:url value="/login?logout" />">Logout</a>
   <h2>Login</h2>
   You must log in to access the customer support site.<br/><br/>
   <%
