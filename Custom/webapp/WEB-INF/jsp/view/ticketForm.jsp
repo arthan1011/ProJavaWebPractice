@@ -5,7 +5,6 @@
   Time: 23:15
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page session="false" %>
 <html>
 <head>
   <title>Customer Support</title>

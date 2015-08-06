@@ -7,7 +7,6 @@
   Time: 11:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page session="false" %>
 <%
   @SuppressWarnings("unchecked")
   Map<Integer, Ticket> ticketDatabase = (Map<Integer, Ticket>) request.getAttribute("ticketDatabase");

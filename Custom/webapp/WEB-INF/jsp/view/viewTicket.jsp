@@ -6,7 +6,6 @@
   Time: 10:47
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page session="false" %>
 <%
   String ticketID = (String) request.getAttribute("ticketID");
   Ticket ticket = (Ticket) request.getAttribute("ticket");
