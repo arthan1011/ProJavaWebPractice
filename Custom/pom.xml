@@ -24,6 +24,13 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>javax.servlet.jsp.jstl-api</artifactId>
             <version>1.2.1</version>
@@ -60,6 +67,13 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
