@@ -1,3 +1,5 @@
+<%--@elvariable id="ticket" type="org.arthan.support.entity.Ticket"--%>
+<%--@elvariable id="ticketID" type="java.lang.String"--%>
 <%@ page import="org.arthan.support.entity.Ticket" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,7 +9,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%
-  String ticketID = (String) request.getAttribute("ticketID");
   Ticket ticket = (Ticket) request.getAttribute("ticket");
 %>
 <!DOCTYPE html>
@@ -17,9 +18,9 @@
 </head>
 <body>
   <a href="<c:url value="/login?logout" />">Logout</a>
-  <h2>Ticket #<%= ticketID%> : <%= ticket.getSubject()%></h2>
-  <i>Customer name - <%= ticket.getCustomerName()%></i><br/><br/>
-  <%= ticket.getBody()%><br/><br/>
+  <h2>Ticket #${ticketID} : ${ticket.subject}</h2>
+  <i>Customer name - ${ticket.customerName}</i><br/><br/>
+  ${ticket.body}<br/><br/>
   <%
     if (ticket.getNumberOfAttachments() > 0) {
       %>Attachments: <%
@@ -31,7 +32,7 @@
         %>
         <a href="<c:url value="/tickets">
           <c:param name="action" value="download" />
-          <c:param name="ticketId" value="<%= ticketID%>" />
+          <c:param name="ticketId" value="${ticketID}" />
           <c:param name="attachment" value="<%= attachment.getName()%>" />
         </c:url>"><%= attachment.getName()%></a><br/><%
       }

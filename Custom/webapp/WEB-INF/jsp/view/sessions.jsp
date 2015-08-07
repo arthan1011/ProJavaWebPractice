@@ -1,3 +1,4 @@
+<%--@elvariable id="numberOfSessions" type="java.lang.Integer"--%>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
@@ -18,7 +19,6 @@
   }
 %>
 <%
-  int numberOfSessions = (int) request.getAttribute("numberOfSessions");
   @SuppressWarnings("unchecked")
   List<HttpSession> sessionList = (List<HttpSession>) request.getAttribute("sessionList");
 %>
@@ -29,7 +29,7 @@
 <body>
   <a href="<c:url value="/login?logout" />">Logout</a>
   <h2>Sessions</h2>
-  There are total <%= numberOfSessions%> in this application<br/><br/>
+  There are total ${numberOfSessions} in this application<br/><br/>
   <%
     long timestamp = System.currentTimeMillis();
     for(HttpSession aSession : sessionList) {
