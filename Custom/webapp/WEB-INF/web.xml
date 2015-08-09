@@ -30,6 +30,10 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
         <param-name>paramOne</param-name>
         <param-value>First</param-value>
     </context-param>
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>taglib</param-value>
+    </context-param>
 
     <context-param>
         <param-name>titan</param-name>

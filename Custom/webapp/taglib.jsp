@@ -32,5 +32,8 @@
         </c:forEach>
         <br/>
     </c:forEach>
+    <fmt:message key="store.greeting">
+        <fmt:param value="89" />
+    </fmt:message>
 </body>
 </html>
