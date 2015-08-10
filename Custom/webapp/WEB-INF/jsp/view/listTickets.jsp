@@ -7,10 +7,7 @@
   Time: 11:33
   To change this template use File | Settings | File Templates.
 --%>
-<%
-  @SuppressWarnings("unchecked")
-  Map<Integer, Ticket> ticketDatabase = (Map<Integer, Ticket>) request.getAttribute("ticketDatabase");
-%>
+<%--@elvariable id="ticketDatabase" type="java.util.Map<Integer, org.arthan.support.entity.Ticket"--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,23 +19,19 @@
   <a href="<c:url value="/tickets">
   <c:param name="action" value="create" />
   </c:url> ">Create ticket</a><br/><br/>
-  <%
-    if (ticketDatabase.size() == 0) {
-      %><i>There are no tickets in the system</i><%
-    }
-    else {
-      for (int ticketID : ticketDatabase.keySet()) {
-        String idString = Integer.toString(ticketID);
-        Ticket ticket = ticketDatabase.get(ticketID);
-      %>
-        Ticket #<%= idString%> : <a href="<c:url value="/tickets">
+  <c:choose>
+    <c:when test="${fn:length(ticketDatabase) == 0}">
+      <i>There are no tickets in the system</i>
+    </c:when>
+    <c:otherwise>
+      <c:forEach items="${ticketDatabase}" var="entry">
+        Ticket #<c:out value="${entry.key}" /> : <a href="
+        <c:url value="/tickets">
           <c:param name="action" value="view"/>
-          <c:param name="ticketId" value="<%= idString%>" />
-        </c:url>"><%= ticket.getSubject()%></a> (customer: <%= ticket.getCustomerName() %>)<br/>
-      <%
-      }
-    }
-  %>
-
+          <c:param name="ticketId" value="${entry.key}" />
+        </c:url>"><c:out value="${entry.value.subject}" /></a> (customer: <c:out value="${entry.value.customerName}" />)<br/>"
+      </c:forEach>
+    </c:otherwise>
+  </c:choose>
 </body>
 </html>

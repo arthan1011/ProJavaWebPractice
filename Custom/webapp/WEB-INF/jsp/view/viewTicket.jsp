@@ -8,9 +8,6 @@
   Time: 10:47
   To change this template use File | Settings | File Templates.
 --%>
-<%
-  Ticket ticket = (Ticket) request.getAttribute("ticket");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,23 +18,18 @@
   <h2>Ticket #${ticketID} : ${ticket.subject}</h2>
   <i>Customer name - ${ticket.customerName}</i><br/><br/>
   ${ticket.body}<br/><br/>
-  <%
-    if (ticket.getNumberOfAttachments() > 0) {
-      %>Attachments: <%
-      int i = 0;
-      for (Attachment attachment : ticket.getAttachments()) {
-        if (i++ > 0) {
-          out.print(", ");
-        }
-        %>
-        <a href="<c:url value="/tickets">
+  <c:if test="${not empty ticket.attachments}">
+    <c:forEach items="${ticket.attachments}" var="attachment" varStatus="loopStatus">
+      <c:if test="${not loopStatus.first}">
+        ", "
+      </c:if>
+      <a href="<c:url value="/tickets">
           <c:param name="action" value="download" />
           <c:param name="ticketId" value="${ticketID}" />
-          <c:param name="attachment" value="<%= attachment.getName()%>" />
-        </c:url>"><%= attachment.getName()%></a><br/><%
-      }
-    }
-  %>
+          <c:param name="attachment" value="${attachment.name}" />
+        </c:url>">${attachment.name}</a><br/>
+    </c:forEach>
+  </c:if>
   <a href="<c:url value="/tickets"/>">Return to list tickets</a>
 </body>
 </html>
