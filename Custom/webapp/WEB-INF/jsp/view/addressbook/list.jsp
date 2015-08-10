@@ -8,13 +8,13 @@
 <%--@elvariable id="contacts" type="java.util.set"--%>
 <html>
 <head>
-    <title>Address Book</title>
+    <title><fmt:message key="title.browser" /> </title>
 </head>
 <body>
-  <h2>Address book contacts</h2>
+  <h2><fmt:message key="title.page" /> </h2>
   <c:choose>
     <c:when test="${empty contacts}">
-      <i>There are no contacts in the address book</i>
+      <i><fmt:message key="message.onContacts" /> </i>
     </c:when>
     <c:otherwise>
       <c:forEach items="${contacts}" var="contact">
@@ -24,9 +24,9 @@
         <c:out value="${contact.address}" /><br/>
         <c:out value="${contact.phoneNumber}" /><br/>
         <c:if test="${contact.birthDay ne null}">
-          Birthday: ${contact.birthDay}<br/>
+          <fmt:message key="label.created" /> : ${contact.birthDay}<br/>
         </c:if>
-        Created: ${contact.dateCreated}<br/><br/>
+        <fmt:message key="label.birthday" /> ${contact.dateCreated}<br/><br/>
       </c:forEach>
     </c:otherwise>
   </c:choose>
