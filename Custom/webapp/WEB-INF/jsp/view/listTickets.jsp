@@ -8,12 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%--@elvariable id="ticketDatabase" type="java.util.Map<Integer, org.arthan.support.entity.Ticket"--%>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Customer Support</title>
-</head>
-<body>
+<temp:basic htmlTitle="Tickets List" bodyTitle="Tickets List">
   <a href="<c:url value="/login?logout" />">Logout</a>
   <h2>Tickets</h2>
   <a href="<c:url value="/tickets">
@@ -29,9 +24,9 @@
         <c:url value="/tickets">
           <c:param name="action" value="view"/>
           <c:param name="ticketId" value="${entry.key}" />
-        </c:url>"><c:out value="${entry.value.subject}" /></a> (customer: <c:out value="${entry.value.customerName}" />)<br/>"
+        </c:url>"><c:out value="${arth:abbreviateString(entry.value.subject, 60)}" /></a>
+        (customer: <c:out value="${entry.value.customerName}" />)<br/>
       </c:forEach>
     </c:otherwise>
   </c:choose>
-</body>
-</html>
+</temp:basic>

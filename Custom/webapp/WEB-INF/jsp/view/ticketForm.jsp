@@ -5,11 +5,7 @@
   Time: 23:15
   To change this template use File | Settings | File Templates.
 --%>
-<html>
-<head>
-  <title>Customer Support</title>
-</head>
-<body>
+<temp:basic htmlTitle="Create a Ticket" bodyTitle="Create a Ticket">
   <a href="<c:url value="/login?logout" />">Logout</a>
   <h2>Create a ticket</h2>
   <form action="tickets" method="POST" enctype="multipart/form-data">
@@ -22,5 +18,4 @@
     <input type="file" id="attachmentInput" name="file1" /><br/>
     <input type="submit" />
   </form>
-</body>
-</html>
+</temp:basic>

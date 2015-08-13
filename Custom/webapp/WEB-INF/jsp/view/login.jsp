@@ -6,12 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%--@elvariable id="loginFailed" type="java.lang.Boolean"--%>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Customer Support</title>
-</head>
-<body>
+<temp:logout htmlTitle="Log In" bodyTitle="Log In">
   <a href="<c:url value="/login?logout" />">Logout</a>
   <h2>Login</h2>
   You must log in to access the customer support site.<br/><br/>
@@ -25,5 +20,4 @@
     <input id="passwordInput" name="password" /><br/>
     <input type="submit" value="Log in" />
   </form>
-</body>
-</html>
+</temp:logout>

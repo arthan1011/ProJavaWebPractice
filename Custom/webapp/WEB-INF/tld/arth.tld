@@ -115,6 +115,12 @@
         <function-signature>java.lang.String abbreviate(java.lang.String,int)</function-signature>
     </function>
 
+    <function>
+        <name>timeIntervalToString</name>
+        <function-class>org.arthan.support.util.TimeUtils</function-class>
+        <function-signature>java.lang.String intervalToString(long)</function-signature>
+    </function>
+
 
     <!-- Invoke 'Generate' action to add tags or functions -->
 

@@ -1,5 +1,6 @@
 package org.arthan.support.entity;
 
+import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,6 +17,8 @@ public class Ticket {
     private String body;
 
     private Map<String, Attachment> attachments = new LinkedHashMap<>();
+
+    private OffsetDateTime dateCreated;
 
     public String getCustomerName()
     {
@@ -65,5 +68,13 @@ public class Ticket {
     public int getNumberOfAttachments()
     {
         return this.attachments.size();
+    }
+
+    public OffsetDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(OffsetDateTime dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }
